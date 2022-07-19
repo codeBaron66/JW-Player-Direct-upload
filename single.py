@@ -1,6 +1,6 @@
 import requests
 
-url = "https://api.jwplayer.com/v2/sites/CivsmZGh/media/"
+url = "https://api.jwplayer.com/v2/sites/{{site_id}}/media/"
 
 payload = {
     "upload": {
@@ -18,11 +18,11 @@ payload = {
 headers = {
     "Accept": "application/json",
     "Content-Type": "application/json",
-    "Authorization": "TG5D7vab8RU8Q8W0y9h2tWInYWpoellsVkpPRk5aWTBWM1Z6aEdOMHhVWjJwNVltRTQn"
+    "Authorization": "API_KEY"
 }
 
 response = requests.post(url, json=payload, headers=headers)
 
 # Put the media
 put_url = response.json()['upload_link']
-requests.put(url=put_url, data=open("/home/fuel/Videos/test.mp4", 'rb').read())
+requests.put(url=put_url, data=open("{{path-to-video}}", 'rb').read())
